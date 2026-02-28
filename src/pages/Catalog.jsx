@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Container from "../components/Container";
-import kbData from "../assets/data.json";
+import kbData from "/data.json";
 
 export default function Catalog() {
   const [items, setItems] = useState([]);

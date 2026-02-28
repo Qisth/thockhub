@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import Card from "../components/Card";
-import kbData from "../assets/data.json";
+import kbData from "/data.json";
 
 export default function Wishlist() {
   const [itemsId, setItemsId] = useState([]);
