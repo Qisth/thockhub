@@ -1,16 +1,14 @@
-# React + Vite
+# ThockHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ThockHub adalah sebuah situs web katalog yang menyediakan produk berbasis keyboard mechanical. Situs web ini dikembangkan menggunakan React dan dibuat untuk memenuhi proyek akhir dari Web Development Pathway oleh GDG on Campus Universitas Sumatera Utara (GDGoC USU).
 
-Currently, two official plugins are available:
+## Struktur Situs Web
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Home
+Pada saat membuka situs web ini, pengguna akan diarahkan ke halaman beranda. Di sini akan dijelaskan tentang dasar-dasar dari situs web ThockHub. Pengguna dapat mengakses halaman katalog dan wishlist melalui baik navbar maupun tombol-tombol di halaman beranda.
 
-## React Compiler
+### Catalog
+Lalu pada saat membuka halaman katalog, pengguna akan ditawarkan card-card berisi keyboard mechanical dan detail yang menyertainya. Di sini, pengguna dapat memasukkan keyboard yang mereka inginkan ke dalam wishlist mereka (yang nanti akan disimpan dalam local storage, jadi wishlistnya akan berbeda-beda tergantung peramban yang digunakan).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Wishlist
+Saat membuka halaman wishlist, pengguna akan diberikan daftar keyboard yang sudah dimasukkan ke wishlist sebelumnya. Di sini, pengguna dapat menghapus keyboard dari wishlist. Setelah itu, halaman web akan diperbarui dan keyboard yang sudah dihapus dari wishlist tidak akan ditampilkan lagi. Halaman ini juga menampilkan jumlah keyboard yang berada dalam wishlist kita. Seperti yang sudah dijelaskan sebelumnya, wishlist ini menggunakan local storage (karena tidak ada dukungan untuk backend seperti Next.js). Oleh karena itu, wishlist ini akan berbeda-beda untuk setiap peramban yang digunakan.
