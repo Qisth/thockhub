@@ -13,7 +13,6 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
