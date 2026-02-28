@@ -3,9 +3,9 @@ import kbData from "../assets/data.json";
 
 export default function CardList() {
   return (
-    <div className="grid grid-cols-3 gap-8">
-      {kbData.map((kb) => (
-        <Card key={kb.id} name={kb.name} price={kb.price} image={kb.image} description={kb.description} />
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {kbData.map((kb, id) => (
+        <Card key={id} {...kb} />
       ))}
     </div>
   )

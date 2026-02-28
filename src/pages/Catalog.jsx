@@ -1,5 +1,6 @@
-import CardList from "../components/CardList";
+import Card from "../components/Card";
 import Container from "../components/Container";
+import kbData from "../assets/data.json";
 
 export default function Catalog() {
   return (
@@ -11,7 +12,11 @@ export default function Catalog() {
         akurasi tinggi, dan kenyamanan mengetik intensif. Anda dapat menyaring
         pencarian keyboard berdasarkan kriteria tertentu.
       </p>
-      <CardList />
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {kbData.map((kb, id) => (
+          <Card key={id} {...kb} />
+        ))}
+      </div>
     </Container>
   );
 }

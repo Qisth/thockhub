@@ -1,18 +1,35 @@
 import { Plus } from "lucide-react";
 
 export default function Card(data) {
+  // helper to keep default values and formatted price
   data = {
+    id: data.id,
     name: data.name ? data.name : "Example Keyboard",
     price: new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
       minimumFractionDigits: 0,
     }).format(data.price ? data.price : 0),
-    image: data.image ? data.image : "https://placehold.net/600x400.png",
+    image: data.image ? data.image : "https://placehold.net/default.png",
     description: data.description
       ? data.description
       : "Example description for a keyboard",
   };
+
+  function addToWishlist() {
+    try {
+      const existing = JSON.parse(localStorage.getItem("wishlist") || "[]");
+      if (!existing.includes(data.id)) {
+        existing.push(data.id);
+        localStorage.setItem("wishlist", JSON.stringify(existing));
+        alert(`${data.name} telah ditambahkan ke wishlist!`);
+      } else {
+        alert(`${data.name} sudah ada dalam wishlist!`);
+      }
+    } catch (e) {
+      console.error("Gagal menyimpan wishlist:", e);
+    }
+  }
 
   return (
     <div className="border border-gray-300 shadow-md flex flex-col bg-gray-200 h-full">
@@ -28,10 +45,13 @@ export default function Card(data) {
           <strong className="block font-bold text-xl mb-3">
             {data.name} ({data.price})
           </strong>
-          <p className="mb-3 h-20">{data.description}</p>
+          <p className="mb-3 h-20 overflow-y-auto">{data.description}</p>
         </div>
       </div>
-      <button className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white px-4 py-2 rounded-md w-auto mx-4 mb-4 cursor-pointer flex items-center justify-center gap-2">
+      <button
+        className="bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white px-4 py-2 rounded-md w-auto mx-4 mb-4 cursor-pointer flex items-center justify-center gap-2"
+        onClick={addToWishlist}
+      >
         <Plus className="align-middle" /> Tambah ke Wishlist
       </button>
     </div>
