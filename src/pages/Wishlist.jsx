@@ -7,12 +7,20 @@ export default function Wishlist() {
   const [itemsId, setItemsId] = useState([]);
 
   useEffect(() => {
-    try {
-      const stored = JSON.parse(localStorage.getItem("wishlist") || "[]");
-      setItemsId(stored);
-    } catch (e) {
-      console.error("Gagal membaca wishlist:", e);
-    }
+    const update = () => {
+      try {
+        const stored = JSON.parse(localStorage.getItem("wishlist") || "[]");
+        setItemsId(stored);
+      } catch (e) {
+        console.error("Gagal membaca wishlist:", e);
+      }
+    };
+
+    // read once on mount
+    update();
+    // also listen to custom event fired by Card
+    window.addEventListener("wishlist-updated", update);
+    return () => window.removeEventListener("wishlist-updated", update);
   }, []);
 
   // derive the actual keyboard objects from the stored IDs
@@ -28,11 +36,16 @@ export default function Wishlist() {
       </p>
 
       {items.length > 0 ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {items.map((item, idx) => (
-            <Card key={idx} {...item} />
-          ))}
-        </div>
+        <>
+          <p className="text-xl text-center mb-8">
+            Sekarang anda memiliki {items.length} keyboard dalam wishlist.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {items.map((item, idx) => (
+              <Card key={idx} {...item} action="remove-from-wishlist" />
+            ))}
+          </div>
+        </>
       ) : (
         <p className="text-center text-xl mt-8">Wishlist kosong</p>
       )}

@@ -14,7 +14,7 @@ export default function Catalog() {
       </p>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {kbData.map((kb, id) => (
-          <Card key={id} {...kb} />
+          <Card key={id} {...kb} action="add-to-wishlist" />
         ))}
       </div>
     </Container>
