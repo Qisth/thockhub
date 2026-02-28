@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Wishlist from "./pages/Wishlist";
-import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
