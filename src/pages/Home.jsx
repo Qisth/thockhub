@@ -9,7 +9,7 @@ export default function Home() {
       </h1>
       <p className="text-xl text-center mb-8">
         ThockHub adalah sebuah situs web katalog yang menyediakan keyboard
-        mechanical untuk keperluan gaming.
+        mechanical untuk pekerjaan yang memerlukan penggunaan keyboard secara intensif.
       </p>
       <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 text-base sm:text-xl">
         <BtnLink to="/catalog">Periksa Katalog</BtnLink>

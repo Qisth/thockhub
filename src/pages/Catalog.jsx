@@ -23,8 +23,7 @@ export default function Catalog() {
       <p className="text-xl text-center mb-8">
         Berikut adalah daftar keyboard yang tersedia. Keyboard yang tersedia
         berjenis mechanical, cocok untuk pekerjaan yang memerlukan kecepatan,
-        akurasi tinggi, dan kenyamanan mengetik intensif. Anda dapat menyaring
-        pencarian keyboard berdasarkan kriteria tertentu.
+        akurasi tinggi, dan kenyamanan mengetik intensif.
       </p>
 
       {isLoading ? (
