@@ -1,11 +1,27 @@
 import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import Card from "../components/Card";
-import kbData from "/data.json";
 
 export default function Wishlist() {
   const [itemsId, setItemsId] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [kbData, setKbData] = useState([]);
+
+  // fetch data.json on mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/data.json");
+        if (!response.ok) throw new Error("Failed to load data");
+        const data = await response.json();
+        setKbData(data);
+      } catch (error) {
+        console.error("Error loading keyboard data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const update = () => {

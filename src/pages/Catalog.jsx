@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Container from "../components/Container";
-import kbData from "/data.json";
 
 export default function Catalog() {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // simulate asynchronous load so a loading state can be shown
-    setIsLoading(true);
-    const t = setTimeout(() => {
-      setItems(kbData);
-      setIsLoading(false);
-    }, 150);
-    return () => clearTimeout(t);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch("/data.json");
+        if (!response.ok) throw new Error("Failed to load data");
+        const kbData = await response.json();
+        setItems(kbData);
+      } catch (error) {
+        console.error("Error loading catalog:", error);
+        setItems([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
