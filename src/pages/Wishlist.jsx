@@ -5,14 +5,18 @@ import kbData from "../assets/data.json";
 
 export default function Wishlist() {
   const [itemsId, setItemsId] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const update = () => {
       try {
+        setIsLoading(true);
         const stored = JSON.parse(localStorage.getItem("wishlist") || "[]");
         setItemsId(stored);
       } catch (e) {
         console.error("Gagal membaca wishlist:", e);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -35,7 +39,9 @@ export default function Wishlist() {
         Anda.
       </p>
 
-      {items.length > 0 ? (
+      {isLoading ? (
+        <p className="text-xl text-center text-gray-600">Memuat wishlist...</p>
+      ) : items.length > 0 ? (
         <>
           <p className="text-xl text-center mb-8">
             Sekarang anda memiliki {items.length} keyboard dalam wishlist.
