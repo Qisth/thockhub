@@ -12,7 +12,7 @@ export default function Catalog() {
         akurasi tinggi, dan kenyamanan mengetik intensif. Anda dapat menyaring
         pencarian keyboard berdasarkan kriteria tertentu.
       </p>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {kbData.map((kb, id) => (
           <Card key={id} {...kb} action="add-to-wishlist" />
         ))}

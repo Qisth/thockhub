@@ -40,7 +40,7 @@ export default function Wishlist() {
           <p className="text-xl text-center mb-8">
             Sekarang anda memiliki {items.length} keyboard dalam wishlist.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item, idx) => (
               <Card key={idx} {...item} action="remove-from-wishlist" />
             ))}

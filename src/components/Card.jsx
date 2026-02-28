@@ -105,22 +105,22 @@ export default function Card(data) {
     }
   }
   return (
-    <div className="border border-gray-300 shadow-md flex flex-col bg-gray-200 h-full">
+    <div className="border border-gray-300 shadow-md hover:shadow-lg transition-shadow flex flex-col bg-gray-200 h-full">
       <div className="flex-1 flex flex-col">
         <div className="overflow-hidden h-40">
-          <img
-            src={data.image}
-            alt={data.name}
-            className="object-cover object-center w-full h-full bg-white"
+            <img
+              src={data.image}
+              alt={data.name}
+              className="object-cover object-center w-full h-full bg-white"
           />
         </div>
         <div className="p-4">
-          <strong className="block font-bold text-xl mb-3">
+            <strong className="block font-bold text-lg md:text-xl mb-3">
             {data.name} ({data.price})
           </strong>
-          <p className="mb-3 h-20 overflow-y-auto">{data.description}</p>
+            <p className="mb-3 h-20 overflow-y-auto text-sm md:text-base">{data.description}</p>
         </div>
-        <div className="mt-auto mx-4 mb-4">{checkAction(data.action)}</div>
+          <div className="mt-auto w-full px-4 pb-4">{checkAction(data.action)}</div>
       </div>
     </div>
   );
